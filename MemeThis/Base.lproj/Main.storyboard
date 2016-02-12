@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeThis" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +18,119 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Put Bottom Text Here" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mF3-Ik-hII">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="205" width="315" height="102"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Put Top Text Here" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qiQ-8n-21G">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="43" y="47" width="315" height="102"/>
+                                </variation>
+                            </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iar-ID-i2y">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Iar-ID-i2y" secondAttribute="height" multiplier="100:11" id="reu-3l-gce"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Album" id="s2X-Qe-BcG">
+                                        <connections>
+                                            <action selector="pickImageFromAlbum:" destination="BYZ-38-t0r" id="0Ew-Sc-s9p"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Camera" id="4eM-T1-OmA">
+                                        <connections>
+                                            <action selector="pickImageFromCamera:" destination="BYZ-38-t0r" id="ufX-v3-BBR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="reu-3l-gce"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="reu-3l-gce"/>
+                                    </mask>
+                                </variation>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8nv-xe-hbz">
+                                <rect key="frame" x="165" y="13" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="156" id="bfo-MN-74J"/>
+                                    <constraint firstAttribute="width" constant="220" id="cjS-gB-2bD"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="bfo-MN-74J"/>
+                                        <exclude reference="cjS-gB-2bD"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="bfo-MN-74J"/>
+                                        <include reference="cjS-gB-2bD"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8nv-xe-hbz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="5VU-7S-s9X"/>
+                            <constraint firstItem="8nv-xe-hbz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="94I-8C-Dpu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Iar-ID-i2y" secondAttribute="trailing" constant="-20" id="OL0-aQ-Cfb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Iar-ID-i2y" secondAttribute="bottom" id="wDU-fj-2aQ"/>
+                            <constraint firstItem="Iar-ID-i2y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="x4Y-dk-DC8"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="mF3-Ik-hII"/>
+                                <exclude reference="qiQ-8n-21G"/>
+                                <exclude reference="Iar-ID-i2y"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="5VU-7S-s9X"/>
+                                <exclude reference="94I-8C-Dpu"/>
+                                <exclude reference="OL0-aQ-Cfb"/>
+                                <exclude reference="x4Y-dk-DC8"/>
+                                <exclude reference="wDU-fj-2aQ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="mF3-Ik-hII"/>
+                                <include reference="qiQ-8n-21G"/>
+                                <include reference="Iar-ID-i2y"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="5VU-7S-s9X"/>
+                                <include reference="94I-8C-Dpu"/>
+                                <include reference="OL0-aQ-Cfb"/>
+                                <include reference="x4Y-dk-DC8"/>
+                                <include reference="wDU-fj-2aQ"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="bottomTextField" destination="mF3-Ik-hII" id="dkh-1g-7Ar"/>
+                        <outlet property="cameraButton" destination="4eM-T1-OmA" id="SLs-uQ-uKi"/>
+                        <outlet property="myMemeImage" destination="8nv-xe-hbz" id="88V-MK-vIV"/>
+                        <outlet property="topTextField" destination="qiQ-8n-21G" id="EQ7-MX-woe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Album" id="15R-cS-dgU"/>
             </objects>
+            <point key="canvasLocation" x="304.5" y="429"/>
         </scene>
     </scenes>
 </document>
