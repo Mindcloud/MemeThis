@@ -19,23 +19,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8nv-xe-hbz" userLabel="MemeImage">
-                                <rect key="frame" x="-4" y="0.0" width="328" height="524"/>
+                                <rect key="frame" x="-4" y="44" width="328" height="480"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="NKv-Nd-c40"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mF3-Ik-hII" userLabel="Bottom">
-                                <rect key="frame" x="-4.5" y="430" width="328" height="48"/>
+                                <rect key="frame" x="-4" y="430" width="328" height="48"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qiQ-8n-21G" userLabel="Top">
-                                <rect key="frame" x="-4" y="42" width="328" height="48"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="40"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                            </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iar-ID-i2y">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iar-ID-i2y" userLabel="ToolbarBottom">
                                 <rect key="frame" x="-4" y="524" width="328" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rhq-G9-a1k"/>
@@ -53,6 +48,27 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="qju-k5-GFh"/>
                                 </items>
                             </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zji-nE-9Od" userLabel="ToolbarTop">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="07o-RS-d2k">
+                                        <connections>
+                                            <action selector="shareAction:" destination="BYZ-38-t0r" id="V6u-YH-NFz"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="S1r-bC-fA4"/>
+                                    <barButtonItem title="Cancel" id="hWk-Yc-iAi">
+                                        <connections>
+                                            <action selector="cancelTapped:" destination="BYZ-38-t0r" id="z8i-vv-HJf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qiQ-8n-21G" userLabel="Top">
+                                <rect key="frame" x="-4" y="86" width="328" height="48"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -64,10 +80,13 @@
                             <constraint firstItem="mF3-Ik-hII" firstAttribute="width" secondItem="8nv-xe-hbz" secondAttribute="width" id="ClE-es-sXs"/>
                             <constraint firstItem="Iar-ID-i2y" firstAttribute="top" secondItem="8nv-xe-hbz" secondAttribute="bottom" id="EOz-jY-F8c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Iar-ID-i2y" secondAttribute="trailing" constant="-20" id="MSJ-n0-5wv"/>
-                            <constraint firstItem="8nv-xe-hbz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="SM5-Ji-5qJ"/>
+                            <constraint firstItem="Zji-nE-9Od" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="RD6-EK-MLL"/>
+                            <constraint firstItem="Zji-nE-9Od" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="TIT-wQ-wyg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Iar-ID-i2y" secondAttribute="bottom" id="dOz-tB-Mk2"/>
                             <constraint firstItem="qiQ-8n-21G" firstAttribute="width" secondItem="8nv-xe-hbz" secondAttribute="width" id="fO4-hQ-Ct1"/>
                             <constraint firstItem="mF3-Ik-hII" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hZf-Sk-6j9"/>
+                            <constraint firstItem="8nv-xe-hbz" firstAttribute="top" secondItem="Zji-nE-9Od" secondAttribute="bottom" id="khm-Fb-lsh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zji-nE-9Od" secondAttribute="trailing" constant="-20" id="okG-fz-xNx"/>
                             <constraint firstItem="8nv-xe-hbz" firstAttribute="top" secondItem="qiQ-8n-21G" secondAttribute="bottom" constant="-90" id="qhB-1N-Vix"/>
                             <constraint firstItem="Iar-ID-i2y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="uDB-VM-ess"/>
                         </constraints>
@@ -75,8 +94,12 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <connections>
                         <outlet property="bottomTextField" destination="mF3-Ik-hII" id="dkh-1g-7Ar"/>
+                        <outlet property="buttonCancel" destination="hWk-Yc-iAi" id="9xC-57-vjW"/>
+                        <outlet property="buttonShare" destination="07o-RS-d2k" id="sve-Tq-ucG"/>
                         <outlet property="cameraButton" destination="4eM-T1-OmA" id="SLs-uQ-uKi"/>
                         <outlet property="myMemeImage" destination="8nv-xe-hbz" id="88V-MK-vIV"/>
+                        <outlet property="toolbarBottom" destination="Iar-ID-i2y" id="wxk-hC-UmL"/>
+                        <outlet property="toolbarTop" destination="Zji-nE-9Od" id="wbO-an-js3"/>
                         <outlet property="topTextField" destination="qiQ-8n-21G" id="EQ7-MX-woe"/>
                     </connections>
                 </viewController>

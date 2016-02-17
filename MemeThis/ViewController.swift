@@ -10,14 +10,25 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
+    //MARK:- Variables
     @IBOutlet weak var myMemeImage: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var toolbarTop: UIToolbar!
+    @IBOutlet weak var toolbarBottom: UIToolbar!
+    @IBOutlet weak var buttonShare: UIBarButtonItem!
+    @IBOutlet weak var buttonCancel: UIBarButtonItem!
+    
+    
+    // Get Status Bar Out of the way
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         let memeTextAttributes = [
             NSStrokeColorAttributeName: UIColor.blackColor(),
             NSForegroundColorAttributeName: UIColor.whiteColor(),
@@ -33,8 +44,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topTextField.delegate = self
         bottomTextField.delegate = self
         
+        initializeFields()
+    }
+    
+    func initializeFields() {
+        myMemeImage.image = nil
+        
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
+        
+        buttonShare.enabled = false
+        buttonCancel.enabled = false
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -45,11 +65,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -78,6 +93,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     {
         if let tempImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             myMemeImage.image = tempImage
+            buttonShare.enabled = true
+            buttonCancel.enabled = true
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -88,6 +105,41 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if bottomTextField.isFirstResponder() && view.frame.origin.y == 0 {
             self.view.frame.origin.y -= getKeyBoardHeight(notification)
         }
+    }
+    
+    
+    // Reset the app
+    @IBAction func cancelTapped(sender: AnyObject) {
+        initializeFields()
+    }
+    
+    @IBAction func shareAction(sender: AnyObject) {
+        let memedImage = generateMemedImage()
+        let activityVC = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        
+        self.presentViewController(activityVC, animated: true, completion: nil)
+    }
+    
+    func hideToolbars() {
+        toolbarTop.hidden = true
+        toolbarBottom.hidden = true
+        
+        
+    }
+    
+    func showToolbars() {
+        toolbarTop.hidden = false
+        toolbarBottom.hidden = false
+    }
+    
+    func generateMemedImage() -> UIImage {
+        hideToolbars()
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        showToolbars()
+        return memedImage
     }
     
     func keyboardWillHide(notification: NSNotification) {
