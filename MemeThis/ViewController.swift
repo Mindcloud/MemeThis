@@ -122,7 +122,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func hideToolbars() {
         navBar.hidden = true
-        toolbarBottom.hidden = true     
+        toolbarBottom.hidden = true
+        
+        myMemeImage.frame = CGRectMake(0 , 0, self.view.frame.width, self.view.frame.height * 0.7)
     }
     
     func showToolbars() {

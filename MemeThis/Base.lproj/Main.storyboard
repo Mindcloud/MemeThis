@@ -57,12 +57,12 @@
                                 <rect key="frame" x="-4" y="44" width="332" height="480"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qiQ-8n-21G" userLabel="Top">
-                                <rect key="frame" x="129" y="86" width="66.5" height="48"/>
+                                <rect key="frame" x="-4" y="86" width="332.5" height="48"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mF3-Ik-hII" userLabel="Bottom">
-                                <rect key="frame" x="92.5" y="430" width="139" height="48"/>
+                                <rect key="frame" x="-4" y="430" width="332" height="48"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
@@ -80,9 +80,11 @@
                             <constraint firstItem="jnK-Hb-kQh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Sqy-bU-xEh"/>
                             <constraint firstItem="Iar-ID-i2y" firstAttribute="top" secondItem="8nv-xe-hbz" secondAttribute="bottom" id="VeG-6G-4Q6"/>
                             <constraint firstItem="Iar-ID-i2y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="WZo-1w-Sv8"/>
+                            <constraint firstItem="mF3-Ik-hII" firstAttribute="width" secondItem="8nv-xe-hbz" secondAttribute="width" id="YPC-1i-JyV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Iar-ID-i2y" secondAttribute="bottom" id="ZDk-6W-W07"/>
                             <constraint firstItem="mF3-Ik-hII" firstAttribute="top" secondItem="8nv-xe-hbz" secondAttribute="bottom" constant="-94" id="dhs-xc-GyY"/>
                             <constraint firstItem="8nv-xe-hbz" firstAttribute="top" secondItem="qiQ-8n-21G" secondAttribute="bottom" constant="-90" id="plf-8G-Be7"/>
+                            <constraint firstItem="qiQ-8n-21G" firstAttribute="width" secondItem="8nv-xe-hbz" secondAttribute="width" id="uWO-BN-KL4"/>
                             <constraint firstItem="mF3-Ik-hII" firstAttribute="centerX" secondItem="8nv-xe-hbz" secondAttribute="centerX" id="wen-uW-JQZ"/>
                             <constraint firstItem="8nv-xe-hbz" firstAttribute="top" secondItem="jnK-Hb-kQh" secondAttribute="bottom" id="yxs-W1-Ryv"/>
                         </constraints>
