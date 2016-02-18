@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,53 +18,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MemeThis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0c-Am-z8w">
-                                <rect key="frame" x="154" y="73" width="293" height="104"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Jeff Boschee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfX-js-XXn">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="4Yu-IG-4Nf">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.13278014662568491" green="0.29513443114312837" blue="0.42846040575916233" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="TfX-js-XXn" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="BNy-Dk-BZ1"/>
-                            <constraint firstItem="l0c-Am-z8w" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="c62-6x-A3c"/>
-                            <constraint firstItem="l0c-Am-z8w" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="64" id="uFu-T1-weN"/>
-                            <constraint firstItem="TfX-js-XXn" firstAttribute="top" secondItem="l0c-Am-z8w" secondAttribute="bottom" constant="79.5" id="yaB-46-tHK"/>
+                            <constraint firstItem="4Yu-IG-4Nf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="1hv-1h-SyO"/>
+                            <constraint firstItem="4Yu-IG-4Nf" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="44" id="7Pb-YA-K7Y"/>
+                            <constraint firstItem="4Yu-IG-4Nf" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="cZX-E5-xom"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="TfX-js-XXn"/>
+                                <exclude reference="4Yu-IG-4Nf"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="c62-6x-A3c"/>
-                                <exclude reference="uFu-T1-weN"/>
-                                <exclude reference="BNy-Dk-BZ1"/>
-                                <exclude reference="yaB-46-tHK"/>
+                                <exclude reference="1hv-1h-SyO"/>
+                                <exclude reference="7Pb-YA-K7Y"/>
+                                <exclude reference="cZX-E5-xom"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="TfX-js-XXn"/>
+                                <include reference="4Yu-IG-4Nf"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="c62-6x-A3c"/>
-                                <include reference="uFu-T1-weN"/>
-                                <include reference="BNy-Dk-BZ1"/>
-                                <include reference="yaB-46-tHK"/>
+                                <include reference="1hv-1h-SyO"/>
+                                <include reference="7Pb-YA-K7Y"/>
+                                <include reference="cZX-E5-xom"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="88" y="525"/>
+            <point key="canvasLocation" x="87" y="525"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="250" height="250"/>
+    </resources>
 </document>

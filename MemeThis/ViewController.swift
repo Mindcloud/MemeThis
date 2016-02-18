@@ -161,8 +161,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func generateMemedImage() -> UIImage {
         toggleToolBars(false)
-        topTextField.updateConstraints()
-        bottomTextField.updateConstraints()
         UIGraphicsBeginImageContextWithOptions(self.view.frame.size, view.opaque, 0.0)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
