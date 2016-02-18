@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iar-ID-i2y" userLabel="ToolbarBottom">
-                                <rect key="frame" x="-4" y="524" width="332" height="44"/>
+                                <rect key="frame" x="-4" y="524" width="328" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rhq-G9-a1k"/>
                                     <barButtonItem title="Album" id="s2X-Qe-BcG">
@@ -54,15 +54,15 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8nv-xe-hbz" userLabel="MemeImage">
-                                <rect key="frame" x="-4" y="44" width="332" height="480"/>
+                                <rect key="frame" x="-4" y="44" width="328" height="480"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qiQ-8n-21G" userLabel="Top">
-                                <rect key="frame" x="-4" y="86" width="332.5" height="48"/>
+                                <rect key="frame" x="-4" y="66" width="328.5" height="48"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mF3-Ik-hII" userLabel="Bottom">
-                                <rect key="frame" x="-4" y="430" width="332" height="48"/>
+                                <rect key="frame" x="-4" y="454" width="328" height="48"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
@@ -71,9 +71,9 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8nv-xe-hbz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="1uW-aK-eiy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8nv-xe-hbz" secondAttribute="trailing" constant="-24" id="3cl-wt-twi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8nv-xe-hbz" secondAttribute="trailing" constant="-20" id="3cl-wt-twi"/>
                             <constraint firstItem="qiQ-8n-21G" firstAttribute="centerX" secondItem="8nv-xe-hbz" secondAttribute="centerX" id="GWq-6u-yQQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Iar-ID-i2y" secondAttribute="trailing" constant="-24" id="IFA-Eo-TpG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Iar-ID-i2y" secondAttribute="trailing" constant="-20" id="IFA-Eo-TpG"/>
                             <constraint firstItem="jnK-Hb-kQh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="IGI-OB-Ieq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jnK-Hb-kQh" secondAttribute="trailing" constant="-20" id="KbE-cD-YPz"/>
                             <constraint firstItem="8nv-xe-hbz" firstAttribute="width" secondItem="Iar-ID-i2y" secondAttribute="width" id="QKW-3b-NK8"/>
@@ -82,8 +82,8 @@
                             <constraint firstItem="Iar-ID-i2y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="WZo-1w-Sv8"/>
                             <constraint firstItem="mF3-Ik-hII" firstAttribute="width" secondItem="8nv-xe-hbz" secondAttribute="width" id="YPC-1i-JyV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Iar-ID-i2y" secondAttribute="bottom" id="ZDk-6W-W07"/>
-                            <constraint firstItem="mF3-Ik-hII" firstAttribute="top" secondItem="8nv-xe-hbz" secondAttribute="bottom" constant="-94" id="dhs-xc-GyY"/>
-                            <constraint firstItem="8nv-xe-hbz" firstAttribute="top" secondItem="qiQ-8n-21G" secondAttribute="bottom" constant="-90" id="plf-8G-Be7"/>
+                            <constraint firstItem="mF3-Ik-hII" firstAttribute="top" secondItem="8nv-xe-hbz" secondAttribute="bottom" constant="-70" id="dhs-xc-GyY"/>
+                            <constraint firstItem="8nv-xe-hbz" firstAttribute="top" secondItem="qiQ-8n-21G" secondAttribute="bottom" constant="-70" id="plf-8G-Be7"/>
                             <constraint firstItem="qiQ-8n-21G" firstAttribute="width" secondItem="8nv-xe-hbz" secondAttribute="width" id="uWO-BN-KL4"/>
                             <constraint firstItem="mF3-Ik-hII" firstAttribute="centerX" secondItem="8nv-xe-hbz" secondAttribute="centerX" id="wen-uW-JQZ"/>
                             <constraint firstItem="8nv-xe-hbz" firstAttribute="top" secondItem="jnK-Hb-kQh" secondAttribute="bottom" id="yxs-W1-Ryv"/>

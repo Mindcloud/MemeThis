@@ -123,18 +123,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func hideToolbars() {
         navBar.hidden = true
         toolbarBottom.hidden = true
-        
-        myMemeImage.frame = CGRectMake(0 , 0, self.view.frame.width, self.view.frame.height * 0.7)
+        myMemeImage.frame = CGRectMake(0 , 0, self.view.frame.width, self.view.frame.height)
     }
     
     func showToolbars() {
         toolbarBottom.hidden = false
         navBar.hidden = false
+        myMemeImage.frame = CGRectMake(20 ,navBar.frame.height, self.view.frame.width - 40, self.view.frame.height - (toolbarBottom.frame.height * 2))
     }
     
     func generateMemedImage() -> UIImage {
         hideToolbars()
-        myMemeImage.updateConstraints()
+        topTextField.updateConstraints()
+        bottomTextField.updateConstraints()
         UIGraphicsBeginImageContextWithOptions(self.view.frame.size, view.opaque, 0.0)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
