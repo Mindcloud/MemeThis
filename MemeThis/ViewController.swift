@@ -9,8 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-
-    //MARK:- Variables
+    
     @IBOutlet weak var myMemeImage: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
@@ -20,7 +19,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var buttonCancel: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationBar!
     
-    
     // Get Status Bar Out of the way
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -28,7 +26,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let memeTextAttributes = [
             NSStrokeColorAttributeName: UIColor.blackColor(),
             NSForegroundColorAttributeName: UIColor.whiteColor(),
@@ -47,6 +45,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         initializeFields()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.unsubscribeFromKeyboardNotifications()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.subscribeToKeyboardNotications()
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+    }
+    
     func initializeFields() {
         myMemeImage.image = nil
         
@@ -57,21 +65,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         buttonCancel.enabled = false
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.unsubscribeFromKeyboardNotifications()
-    }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.subscribeToKeyboardNotications()
-        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-    }
-    
+
     @IBAction func pickImageFromAlbum(sender: AnyObject) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
@@ -107,10 +105,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    // Get Keyboard height from userInfo
+    func getKeyBoardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo!
+        let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.CGRectValue().height
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField.text == "TOP" || textField.text == "BOTTOM" {
+            textField.text = ""
+        }
+    }
     
     // Reset the app
     @IBAction func cancelTapped(sender: AnyObject) {
-        initializeFields()
+        let refreshAlert = UIAlertController(title: "Cancel Meme?", message: "This will reset the meme editor, sure?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            self.navigationController?.popToRootViewControllerAnimated(true)
+            self.initializeFields()
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            refreshAlert .dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+        presentViewController(refreshAlert, animated: true, completion: nil)
     }
     
     @IBAction func shareAction(sender: AnyObject) {
@@ -120,31 +141,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(activityVC, animated: true, completion: nil)
     }
     
-    func hideToolbars() {
-        navBar.hidden = true
-        toolbarBottom.hidden = true
-        myMemeImage.frame = CGRectMake(0 , 0, self.view.frame.width, self.view.frame.height)
-        topTextField.placeholder = ""
-        bottomTextField.placeholder = ""
-    }
-    
-    func showToolbars() {
-        toolbarBottom.hidden = false
-        navBar.hidden = false
-        myMemeImage.frame = CGRectMake(20 ,navBar.frame.height, self.view.frame.width - 40, self.view.frame.height - (toolbarBottom.frame.height * 2))
-        topTextField.placeholder = "TOP"
-        bottomTextField.placeholder = "BOTTOM"
+    func toggleToolBars(visible: Bool) {
+        if visible {
+            // Show Bars
+            toolbarBottom.hidden = false
+            navBar.hidden = false
+            myMemeImage.frame = CGRectMake(20 ,navBar.frame.height, self.view.frame.width - 40, self.view.frame.height - (toolbarBottom.frame.height * 2))
+            topTextField.placeholder = "TOP"
+            bottomTextField.placeholder = "BOTTOM"
+        }
+        else {
+            navBar.hidden = true
+            toolbarBottom.hidden = true
+            myMemeImage.frame = CGRectMake(0 , 0, self.view.frame.width, self.view.frame.height)
+            topTextField.placeholder = ""
+            bottomTextField.placeholder = ""
+        }
     }
     
     func generateMemedImage() -> UIImage {
-        hideToolbars()
+        toggleToolBars(false)
         topTextField.updateConstraints()
         bottomTextField.updateConstraints()
         UIGraphicsBeginImageContextWithOptions(self.view.frame.size, view.opaque, 0.0)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        showToolbars()
+        toggleToolBars(true)
         return memedImage
     }
     
@@ -163,18 +186,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
-
-    // Get Keyboard height from userInfo
-    func getKeyBoardHeight(notification: NSNotification) -> CGFloat {
-        let userInfo = notification.userInfo!
-        let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
-        return keyboardSize.CGRectValue().height
-    }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
-        if textField.text == "TOP" || textField.text == "BOTTOM" {
-            textField.text = ""
-        }
-    }
+
 }
 
