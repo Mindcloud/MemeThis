@@ -22,42 +22,48 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="54" y="101" width="293" height="104"/>
-                                </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jeff Boschee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfL-5V-Ctj">
-                                <rect key="frame" x="243" y="327" width="114" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Jeff Boschee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfX-js-XXn">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="143" y="311" width="114" height="21"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vfL-5V-Ctj" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9SL-8G-lxc"/>
+                            <constraint firstItem="TfX-js-XXn" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="BNy-Dk-BZ1"/>
                             <constraint firstItem="l0c-Am-z8w" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="c62-6x-A3c"/>
+                            <constraint firstItem="l0c-Am-z8w" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="64" id="uFu-T1-weN"/>
+                            <constraint firstItem="TfX-js-XXn" firstAttribute="top" secondItem="l0c-Am-z8w" secondAttribute="bottom" constant="79.5" id="yaB-46-tHK"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="TfX-js-XXn"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="c62-6x-A3c"/>
-                                <exclude reference="9SL-8G-lxc"/>
+                                <exclude reference="uFu-T1-weN"/>
+                                <exclude reference="BNy-Dk-BZ1"/>
+                                <exclude reference="yaB-46-tHK"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="TfX-js-XXn"/>
+                            </mask>
                             <mask key="constraints">
                                 <include reference="c62-6x-A3c"/>
-                                <include reference="9SL-8G-lxc"/>
+                                <include reference="uFu-T1-weN"/>
+                                <include reference="BNy-Dk-BZ1"/>
+                                <include reference="yaB-46-tHK"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="88" y="525"/>
         </scene>
     </scenes>
 </document>

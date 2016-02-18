@@ -15,10 +15,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var toolbarTop: UIToolbar!
     @IBOutlet weak var toolbarBottom: UIToolbar!
     @IBOutlet weak var buttonShare: UIBarButtonItem!
     @IBOutlet weak var buttonCancel: UIBarButtonItem!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     
     // Get Status Bar Out of the way
@@ -121,20 +121,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func hideToolbars() {
-        toolbarTop.hidden = true
-        toolbarBottom.hidden = true
-        
-        
+        navBar.hidden = true
+        toolbarBottom.hidden = true     
     }
     
     func showToolbars() {
-        toolbarTop.hidden = false
         toolbarBottom.hidden = false
+        navBar.hidden = false
     }
     
     func generateMemedImage() -> UIImage {
         hideToolbars()
-        UIGraphicsBeginImageContext(self.view.frame.size)
+        myMemeImage.updateConstraints()
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, view.opaque, 0.0)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
