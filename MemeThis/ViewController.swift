@@ -124,12 +124,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         navBar.hidden = true
         toolbarBottom.hidden = true
         myMemeImage.frame = CGRectMake(0 , 0, self.view.frame.width, self.view.frame.height)
+        topTextField.placeholder = ""
+        bottomTextField.placeholder = ""
     }
     
     func showToolbars() {
         toolbarBottom.hidden = false
         navBar.hidden = false
         myMemeImage.frame = CGRectMake(20 ,navBar.frame.height, self.view.frame.width - 40, self.view.frame.height - (toolbarBottom.frame.height * 2))
+        topTextField.placeholder = "TOP"
+        bottomTextField.placeholder = "BOTTOM"
     }
     
     func generateMemedImage() -> UIImage {
