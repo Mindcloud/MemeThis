@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F372BDC1C764371006BCBF7 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F372BDB1C764371006BCBF7 /* Meme.swift */; };
+		1F372BDE1C7649CE006BCBF7 /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F372BDD1C7649CE006BCBF7 /* impact.ttf */; };
 		1F93FBB51C6568CE00E3BDCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F93FBB41C6568CE00E3BDCA /* AppDelegate.swift */; };
 		1F93FBB71C6568CE00E3BDCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F93FBB61C6568CE00E3BDCA /* ViewController.swift */; };
 		1F93FBBA1C6568CE00E3BDCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F93FBB81C6568CE00E3BDCA /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		1F372BDB1C764371006BCBF7 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		1F372BDD1C7649CE006BCBF7 /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = impact.ttf; sourceTree = "<group>"; };
 		1F93FBB11C6568CE00E3BDCA /* MemeThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F93FBB41C6568CE00E3BDCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F93FBB61C6568CE00E3BDCA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				1F93FBBB1C6568CE00E3BDCA /* Assets.xcassets */,
 				1F93FBBD1C6568CE00E3BDCA /* LaunchScreen.storyboard */,
 				1F93FBC01C6568CE00E3BDCA /* Info.plist */,
+				1F372BDD1C7649CE006BCBF7 /* impact.ttf */,
 			);
 			path = MemeThis;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F372BDE1C7649CE006BCBF7 /* impact.ttf in Resources */,
 				1F93FBBF1C6568CE00E3BDCA /* LaunchScreen.storyboard in Resources */,
 				1F93FBBC1C6568CE00E3BDCA /* Assets.xcassets in Resources */,
 				1F93FBBA1C6568CE00E3BDCA /* Main.storyboard in Resources */,
