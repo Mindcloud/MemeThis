@@ -27,21 +27,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let memeTextAttributes = [
-            NSStrokeColorAttributeName: UIColor.blackColor(),
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSFontAttributeName: UIFont(name: "Impact", size: 50)!,
-            NSStrokeWidthAttributeName: -3.0
-        ]
-        
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.textAlignment = .Center
-        bottomTextField.textAlignment = .Center
-        
-        topTextField.delegate = self
-        bottomTextField.delegate = self
-        
+        setupTextField(topTextField)
+        setupTextField(bottomTextField)
         initializeFields()
     }
     
@@ -53,6 +40,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(animated: Bool) {
         self.subscribeToKeyboardNotications()
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+    }
+    
+    func setupTextField(textField: UITextField) {
+        let memeTextAttributes = [
+            NSStrokeColorAttributeName: UIColor.blackColor(),
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont(name: "Impact", size: 50)!,
+            NSStrokeWidthAttributeName: -3.0
+        ]
+        
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .Center
+        textField.delegate = self
     }
     
     func initializeFields() {
@@ -69,21 +69,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.resignFirstResponder()
         return true
     }
-
-    @IBAction func pickImageFromAlbum(sender: AnyObject) {
+    
+    func getImage(sourceType: UIImagePickerControllerSourceType) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.editing = false
-        pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        pickerController.sourceType = sourceType
         self.presentViewController(pickerController, animated: true, completion: nil)
+    }
+
+    @IBAction func pickImageFromAlbum(sender: AnyObject) {
+        getImage(UIImagePickerControllerSourceType.PhotoLibrary)
     }
     
     @IBAction func pickImageFromCamera(sender: AnyObject) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.editing = false
-        pickerController.sourceType = UIImagePickerControllerSourceType.Camera
-        self.presentViewController(pickerController, animated: true, completion: nil)
+        getImage(UIImagePickerControllerSourceType.Camera)
     }
     
     func imagePickerController(picker: UIImagePickerController,
@@ -155,14 +155,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             // Show Bars
             toolbarBottom.hidden = false
             navBar.hidden = false
-            myMemeImage.frame = CGRectMake(20 ,navBar.frame.height, self.view.frame.width - 40, self.view.frame.height - (toolbarBottom.frame.height * 2))
+            myMemeImage.frame = CGRectMake(20 ,navBar.frame.height, view.frame.width - 40, view.frame.height - (toolbarBottom.frame.height * 2))
             topTextField.placeholder = "TOP"
             bottomTextField.placeholder = "BOTTOM"
         }
         else {
             navBar.hidden = true
             toolbarBottom.hidden = true
-            myMemeImage.frame = CGRectMake(0 , 0, self.view.frame.width, self.view.frame.height)
+            myMemeImage.frame = CGRectMake(0 , 0, view.frame.width, view.frame.height)
             topTextField.placeholder = ""
             bottomTextField.placeholder = ""
         }
@@ -171,8 +171,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func generateMemedImage() -> UIImage {
         toggleToolBars(false)
         myMemeImage.updateConstraints()
-        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, view.opaque, 0.0)
-        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, view.opaque, 0.0)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         toggleToolBars(true)
