@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var myMemeImage: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -120,6 +120,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // Reset the app
     @IBAction func cancelTapped(sender: AnyObject) {
+        /*
         let refreshAlert = UIAlertController(title: "Cancel Meme?", message: "This will reset the meme editor, sure?", preferredStyle: UIAlertControllerStyle.Alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
@@ -132,6 +133,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }))
         
         presentViewController(refreshAlert, animated: true, completion: nil)
+*/
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func shareAction(sender: AnyObject) {
@@ -144,7 +147,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 return
             }
             
-            _ = Meme(topText: self.topTextField.text!, bottomText: self.bottomTextField.text!, original: self.myMemeImage.image!, memedImage: memedImage)
+            // Save the Meme
+            let newMeme = Meme(topText: self.topTextField.text!, bottomText: self.bottomTextField.text!, original: self.myMemeImage.image!, memedImage: memedImage)
+            newMeme.save()
         }
         
         self.presentViewController(activityVC, animated: true, completion: nil)
@@ -195,6 +200,5 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
-
 }
 
